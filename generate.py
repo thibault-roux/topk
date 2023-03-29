@@ -63,31 +63,32 @@ if __name__ == "__main__":
     hyps = []
     binary_lists = []
     with open("data/" + filename, "r", encoding="utf8") as f:
-        for line in file:
+        for line in f:
             line = line.split("\t")
-            ref = line[1]
-            hyp = line[2]
+            ref = line[1].split(" ")
+            hyp = line[2].split(" ")
             ref_aligned, hyp_aligned, binary_list = levenstein_alignment(ref, hyp)
             refs.append(ref_aligned)
             hyps.append(hyp_aligned)
             binary_lists.append(binary_list)
+            print(ref_aligned)
+            input()
 
             
     # given the reference and hypothesis in two lists using the levenstein_alignment function, align the reference and hypothesis so we can print the top substitutions and deletions and insertions
-    # print the top 5 substitutions, deletions and insertions
 
     substitutions = []
     deletions = []
     insertions = []
-    for binary_list in binary_lists:
-        for i, binary in enumerate(binary_list):
+    for i, binary_list in enumerate(binary_lists):
+        for j, binary in enumerate(binary_list):
             if binary == 0:
-                if hyps[i] == "<epsilon>":
-                    deletions.append(refs[i])
-                elif refs[i] == "<epsilon>":
-                    insertions.append(hyps[i])
+                if hyps[i][j] == "<epsilon>":
+                    deletions.append(refs[i][j])
+                elif refs[i][j] == "<epsilon>":
+                    insertions.append(hyps[i[j]])
                 else:
-                    substitutions.append((refs[i], hyps[i]))
+                    substitutions.append((refs[i][j], hyps[i][j]))
 
     print("Substitutions:")
     for substitution in sorted(substitutions, key=lambda x: substitutions.count(x), reverse=True)[:5]:
