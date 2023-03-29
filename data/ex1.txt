@@ -1,5 +1,8 @@
-1	hello how are you	hello how are u	_
-2	where is bryan	where is bryan	_
-3	bryan is in the kitchen	brian is in the kitchen	_
-4	tell him mom is waiting	tell him am is waiting	_
-5	ok i am going	ok i m going	_
+1	hello how are you bro	hello how are u	_
+2	where is bryan bro	where is brian	_
+3	ah ah well bryan is in the kitchen	well brian is in the kitchen	_
+4	tell him mom is waiting	tell him am is waiting what	_
+5	ok i am going	ok i m going what again	_
+6	bryan	brian	_
+7	i hate bryan man	i hate brian	_
+8	the fuck is bryan doing	the fuck is brian doing	_

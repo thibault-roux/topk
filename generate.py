@@ -1,5 +1,5 @@
 import numpy as np
-
+from collections import Counter
 
 def levenstein_alignment(ref, hyp):
     # create a matrix of size (len(ref)+1) x (len(hyp)+1)
@@ -52,6 +52,10 @@ def levenstein_alignment(ref, hyp):
     return refa, hypa, binary_list
 
 
+# write a function that return the n most frequent elmements in a list
+def most_frequent(lst, n):
+    return Counter(lst).most_common(n)
+
 
 
 
@@ -88,12 +92,15 @@ if __name__ == "__main__":
                 else:
                     substitutions.append((refs[i][j], hyps[i][j]))
 
+
+    n = 5
+
     print("Substitutions:")
-    for substitution in sorted(substitutions, key=lambda x: substitutions.count(x), reverse=True)[:5]:
-        print(substitution, substitutions.count(substitution))
+    for substitution in most_frequent(substitutions, n):
+        print(substitution)
     print("Deletions:")
-    for deletion in sorted(deletions, key=lambda x: deletions.count(x), reverse=True)[:5]:
-        print(deletion, deletions.count(deletion))
+    for deletion in most_frequent(deletions, n):
+        print(deletion)
     print("Insertions:")
-    for insertion in sorted(insertions, key=lambda x: insertions.count(x), reverse=True)[:5]:
-        print(insertion, insertions.count(insertion))
+    for insertion in most_frequent(insertions, n):
+        print(insertion)
