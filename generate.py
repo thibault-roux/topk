@@ -71,8 +71,6 @@ if __name__ == "__main__":
             refs.append(ref_aligned)
             hyps.append(hyp_aligned)
             binary_lists.append(binary_list)
-            print(ref_aligned)
-            input()
 
             
     # given the reference and hypothesis in two lists using the levenstein_alignment function, align the reference and hypothesis so we can print the top substitutions and deletions and insertions
@@ -86,7 +84,7 @@ if __name__ == "__main__":
                 if hyps[i][j] == "<epsilon>":
                     deletions.append(refs[i][j])
                 elif refs[i][j] == "<epsilon>":
-                    insertions.append(hyps[i[j]])
+                    insertions.append(hyps[i][j])
                 else:
                     substitutions.append((refs[i][j], hyps[i][j]))
 
