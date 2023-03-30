@@ -1,0 +1,6 @@
+bryan	brian	5
+you	u	2
+mom	am	1
+am	m	1
+again	agai	1
+joe	joy	1
