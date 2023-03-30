@@ -1,5 +1,6 @@
 import numpy as np
 from collections import Counter
+import os
 
 def levenstein_alignment(ref, hyp):
     # create a matrix of size (len(ref)+1) x (len(hyp)+1)
@@ -93,7 +94,7 @@ if __name__ == "__main__":
                     substitutions.append((refs[i][j], hyps[i][j]))
 
 
-    n = 5
+    n = 6
 
     print("Substitutions:")
     for substitution in most_frequent(substitutions, n):
@@ -104,3 +105,16 @@ if __name__ == "__main__":
     print("Insertions:")
     for insertion in most_frequent(insertions, n):
         print(insertion)
+
+    if os.path.isdir("results/" + filename[:-4]) == False:
+        os.mkdir("results/" + filename[:-4])
+
+    with open("results/" + filename[:-4] + "/substitutions.txt", "w", encoding="utf8") as f:
+        for substitution in most_frequent(substitutions, len(substitutions)):
+            f.write(substitution[0][0] + "\t" + substitution[0][1] + "\t" + str(substitution[1]) + "\n")
+    with open("results/" + filename[:-4] + "/deletions.txt", "w", encoding="utf8") as f:
+        for deletion in most_frequent(deletions, len(deletions)):
+            f.write(deletion[0] + "\t" + str(deletion[1]) + "\n")
+    with open("results/" + filename[:-4] + "/insertions.txt", "w", encoding="utf8") as f:
+        for insertion in most_frequent(insertions, len(insertions)):
+            f.write(insertion[0] + "\t" + str(insertion[1]) + "\n")
